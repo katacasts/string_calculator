@@ -1,4 +1,6 @@
 module StringCalculator
+  DEFAULT_DELIMITER = ','
+
   def add
     return 0 if empty?
     raise_if_negatives
@@ -18,6 +20,14 @@ module StringCalculator
   end
 
   def delimiter
-    @delimiter ||= self[0,2] == '//' ? self[2,1] : ','
+    @delimiter ||= has_custom_delimiter? ? custom_delimiter : DEFAULT_DELIMITER
+  end
+
+  def has_custom_delimiter?
+    self[0,2] == '//'
+  end
+
+  def custom_delimiter
+    self[2,1]
   end
 end
