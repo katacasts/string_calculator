@@ -18,6 +18,6 @@ module StringCalculator
   end
 
   def delimiter
-    @delimiter ||= self[0,2] == '//' ? delimiter = self[2,1] : ','
+    @delimiter ||= self[0,2] == '//' ? self[2,1] : ','
   end
 end
